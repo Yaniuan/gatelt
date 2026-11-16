@@ -1,13 +1,11 @@
 name: VPN Gate Node Check
 
-# 模板仓库默认不配置定时任务：需要自动更新时，把下面的注释替换成你自己的 cron。
-# 注意：GitHub 调度最小间隔约 5 分钟，但通常会延迟几分钟；仓库连续 60 天无提交会让定时任务自动停用。
-#
-# on:
-#   schedule:
-#     - cron: '*/30 * * * *'
+# 定时任务：每小时整点运行一次（UTC，每小时的 0 分）；手动触发仍可用。
+# 注意：GitHub 调度通常会延迟几分钟，不保证准点；仓库连续 60 天没有提交，定时任务会被 GitHub 自动停用。
 
 on:
+  schedule:
+      - cron: '0 * * * *'
   workflow_dispatch:
     inputs:
       max_nodes:
